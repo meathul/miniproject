@@ -3,6 +3,7 @@ from tools.filter_tool import filter_products
 from tools.scrape_tool import get_real_time_price
 from tools.compare_tool import select_best_product
 from llm.groq_wrapper import GroqLLM
+from agents.routine_agent import run_true_langchain_routine_agent
 
 # You may need to adjust imports if running as a module
 
@@ -13,7 +14,7 @@ def recommend_product(query: str, user_profile: dict) -> dict:
         query: User's product query (e.g., 'suggest a moisturizer')
         user_profile: Dict with user preferences (skin_type, age, ethnicity, budget, preferred brands)
     Returns:
-        Dict with best product and explanation.
+        Dict with best product, explanation, and skincare routine (from true agent).
     """
     # 1. Retrieve relevant products
     products = semantic_search(query)
@@ -44,4 +45,6 @@ def recommend_product(query: str, user_profile: dict) -> dict:
         "Explain in detail why this product is the best match for the user, considering their profile and preferences."
     )
     explanation = llm(prompt)
-    return {"product": best, "explanation": explanation} 
+    # 6. Build skincare routine using true LangChain agent
+    routine = run_true_langchain_routine_agent(user_profile, best, filtered)
+    return {"product": best, "explanation": explanation, "routine": routine} 
