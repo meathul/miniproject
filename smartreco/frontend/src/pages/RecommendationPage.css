@@ -1,0 +1,215 @@
+/* Outer layout */
+.recommendation-wrapper {
+  background: linear-gradient(to right, #A9F1DF, #84a7d4);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Container Box */
+.recommendation-box {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+.recommendation-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.recommendation-header h1 {
+  font-size: 2.2rem;
+  color: #4e9881;
+}
+
+.recommendation-header p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Chat */
+.chat-input-area textarea {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  resize: none;
+  height: 90px;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s ease;
+}
+
+.button-group button:hover {
+  opacity: 0.9;
+}
+
+.button-group .clear-btn {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.button-group button:not(.clear-btn) {
+  background: #4e9881;
+  color: white;
+}
+
+/* Response */
+.response-area {
+  background: #f9fffb;
+  border-left: 4px solid #4e9881;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+/* Products */
+.products-area h2 {
+  margin-bottom: 15px;
+  color: #4e9881;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.recommendation-bg {
+  min-height: 100vh;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
+.recommendation-card {
+  background: #fff;
+  border-radius: 32px;
+  box-shadow: 0 4px 32px rgba(228,143,143,0.10);
+  padding: 40px 32px 32px 32px;
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.recommendation-header h1 {
+  font-size: 2.2rem;
+  color: #e48f8f;
+  font-weight: 900;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.recommendation-header p {
+  color: #b88b8b;
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.chat-input-area textarea {
+  width: 100%;
+  min-height: 60px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1.5px solid #ffd6d6;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  background: #fff;
+  color: #2d2d2d;
+  resize: vertical;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.response-area {
+  background: #fff6f3;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 18px;
+  color: #2d2d2d;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(228,143,143,0.06);
+}
+
+.response-area.error {
+  background: #ffe0e6;
+  color: #e48f8f;
+}
+
+.products-area {
+  margin-top: 18px;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+}
+
+.back-btn {
+  align-self: flex-start;
+  margin-bottom: 18px;
+  background: #ffe0e6;
+  color: #e48f8f;
+  border-radius: 24px;
+  padding: 8px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(228,143,143,0.08);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.back-btn:hover {
+  background: #e48f8f;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(228,143,143,0.16);
+}
+
+@media (max-width: 700px) {
+  .recommendation-card {
+    padding: 24px 8px;
+  }
+}

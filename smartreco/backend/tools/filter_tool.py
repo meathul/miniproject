@@ -16,7 +16,7 @@ def filter_products(
         brands: (Optional) List of preferred brands.
         budget: (Optional) Max price allowed.
     Returns:
-        Filtered list of products.
+        Filtered list of products. If no products match all filters, returns all products (or all under budget) as fallback.
     """
     filtered = []
     for product in products:
@@ -29,4 +29,9 @@ def filter_products(
         if brands and product.get("brand", "").lower() not in [b.lower() for b in brands]:
             continue
         filtered.append(product)
+    # Fallback: if nothing matched, return all products (or all under budget)
+    if not filtered:
+        if budget is not None:
+            return [p for p in products if float(p.get("price", 0)) <= budget]
+        return products
     return filtered

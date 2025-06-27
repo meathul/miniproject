@@ -46,5 +46,20 @@ def recommend_product(query: str, user_profile: dict) -> dict:
     )
     explanation = llm(prompt)
     # 6. Build skincare routine using true LangChain agent
-    routine = run_true_langchain_routine_agent(user_profile, best, filtered)
-    return {"product": best, "explanation": explanation, "routine": routine} 
+    best_category = best.get('category', '').lower()
+    routine = run_true_langchain_routine_agent(user_profile, best, filtered, routine_type=best_category)
+
+    # 7. Expand and format the routine using LLM
+    expand_prompt = (
+        f"User profile: {user_profile}\n"
+        f"Recommended product: {best['product_name']} by {best['brand']} (Price: {best.get('real_time_price', best.get('price'))})\n"
+        f"Here is a skincare routine (in raw steps):\n{routine}\n"
+        "Please expand on this routine, making it concise, actionable, and tailored to the user's profile. "
+        "Format it under the heading '## Skincare Routine', and ensure each step is clearly explained. "
+        f"Highlight where the recommended product '{best['product_name']}' is used in the routine. "
+        "Do not repeat the product justification, only focus on the routine. "
+        "Output the routine as a clear, short, step-by-step list."
+    )
+    expanded_routine = llm(expand_prompt)
+
+    return {"product": best, "explanation": explanation, "routine": routine, "expanded_routine": expanded_routine} 

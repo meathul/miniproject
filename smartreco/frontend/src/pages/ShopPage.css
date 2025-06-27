@@ -1,0 +1,42 @@
+.shop-wrapper {
+  padding: 2rem;
+  background: linear-gradient(to bottom right, #fceff9, #e3f2fd);
+  min-height: 100vh;
+}
+
+.shop-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.shop-header h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.shop-header input {
+  padding: 10px 15px;
+  border-radius: 20px;
+  width: 300px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.shop-header button {
+  padding: 10px 20px;
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.product-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}

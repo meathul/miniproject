@@ -1,0 +1,79 @@
+.landing-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right,  #A9F1DF, #84a7d4);
+  text-align: center;
+  padding: 50px;
+}
+
+.landing-container h1 {
+  font-size: 3rem;
+  color: #4e9881;
+  margin-bottom: 10px;
+}
+
+.landing-container p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+}
+
+.landing-container a {
+  margin-top: 30px;
+  padding: 12px 24px;
+  background-color: #4e9881;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.landing-bg {
+  min-height: 100vh;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-card {
+  background: #fff;
+  border-radius: 32px;
+  box-shadow: 0 4px 32px rgba(228,143,143,0.10);
+  padding: 48px 40px 40px 40px;
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brand-name {
+  font-size: 2.8rem;
+  color: #e48f8f;
+  font-weight: 900;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.tagline {
+  color: #b88b8b;
+  font-size: 1.2rem;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.landing-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.start-button, .user-info-button {
+  width: 100%;
+}

@@ -45,9 +45,10 @@ explain_tool = Tool(
     description="Explain why a product is a good choice for a step and user profile. Input is a tuple: (product, step, user_profile)."
 )
 
-def run_true_langchain_routine_agent(user_profile: dict, best_product: Dict, filtered_products: List[Dict]):
+def run_true_langchain_routine_agent(user_profile: dict, best_product: Dict, filtered_products: List[Dict], routine_type: str = None):
     """
     True LangChain agent: receives tools and a prompt, and builds a skincare routine for the given product.
+    routine_type: the category/type of the best product (e.g., 'sunscreen'), to ensure it is included in the correct step.
     """
     tools = [serper_tool, filter_tool, explain_tool]
     agent = initialize_agent(
@@ -56,7 +57,22 @@ def run_true_langchain_routine_agent(user_profile: dict, best_product: Dict, fil
         agent="zero-shot-react-description",
         verbose=True,
         handle_parsing_errors=True,
+        max_iterations=3  # Allow up to 3 cycles (first answer + 2 more)
     )
+    # Build a 5-step routine and ensure the best product is used in the correct step
+    if routine_type:
+        # Common 5-step routine: cleanser, toner, serum, moisturizer, sunscreen
+        base_steps = ["cleanser", "toner", "serum", "moisturizer", "sunscreen"]
+        routine_steps = []
+        for step in base_steps:
+            if step != routine_type:
+                routine_steps.append(step)
+        # Insert the main product type in the correct place (after cleanser or as appropriate)
+        if routine_type not in routine_steps:
+            routine_steps.insert(1, routine_type)  # After cleanser
+        routine_steps = routine_steps[:5]
+    else:
+        routine_steps = ["cleanser", "toner", "serum", "moisturizer", "sunscreen"]
     prompt = (
         "You are an expert skincare routine builder. "
         "You must use ONLY the provided tools to answer. "
@@ -66,9 +82,16 @@ def run_true_langchain_routine_agent(user_profile: dict, best_product: Dict, fil
         "Action Input: <input to the tool>\n"
         "Observation: <result of the tool>\n"
         "Repeat Thought/Action/Action Input/Observation as needed.\n"
+        "Do NOT output Final Answer until you have completed at least one Action/Observation cycle.\n"
         "When you are done, output:\n"
-        "Final Answer: <your final answer>\n"
-        f"Suggest a skincare routine for this product: {best_product}. Use only the provided tools."
+        "Final Answer: <your final answer as a bullet-point step-by-step list, e.g.:\n"
+        "- Step one\n"
+        "- Step two\n"
+        "- ...>\n"
+        f"Suggest a 5-step skincare routine for this user profile: {user_profile}.\n"
+        f"Make sure to include the recommended product '{best_product['product_name']}' by {best_product['brand']} (category: {best_product['category']}) in the {routine_type if routine_type else 'most relevant'} step of the routine. "
+        "Output the routine as a clear, bullet-point list, and make each step actionable and tailored to the user's profile."
+        f"\nRoutine steps to include: {routine_steps}"
     )
     result = agent.run(prompt)
     return result

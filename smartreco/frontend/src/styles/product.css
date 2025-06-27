@@ -6,3 +6,35 @@
   margin: 8px 0;
   background: #fff;
 }
+
+.aesthetic-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 16px rgba(228,143,143,0.10);
+  padding: 24px 18px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 140px;
+  max-width: 180px;
+  min-height: 180px;
+  margin: 0 auto;
+}
+
+.product-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(228,143,143,0.08);
+  background: #ffe0e6;
+}
+
+.product-brand {
+  font-size: 1.1rem;
+  color: #e48f8f;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+}

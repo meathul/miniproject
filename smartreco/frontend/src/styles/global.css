@@ -1,7 +1,88 @@
-/* Global styles placeholder */
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', 'Montserrat', 'Poppins', Arial, sans-serif;
+  background: #fff6f3;
+  color: #2d2d2d;
   margin: 0;
   padding: 0;
-  background: #f8f9fa;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') center center/cover no-repeat;
+  filter: blur(8px) brightness(0.85);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', 'Poppins', Arial, sans-serif;
+  font-weight: 700;
+  color: #e48f8f;
+  margin-top: 0;
+}
+
+a {
+  color: #e48f8f;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #ffb6b6;
+}
+
+button {
+  font-family: inherit;
+  background: #ffe0e6;
+  color: #e48f8f;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 8px 0;
+  box-shadow: 0 2px 8px rgba(228,143,143,0.08);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+button:hover, .start-button:hover, .user-info-button:hover, .clear-btn:hover, .back-btn:hover, .landing-btn:hover {
+  background: #e48f8f;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(228,143,143,0.16);
+}
+
+input, textarea, select {
+  font-family: inherit;
+  border: 1.5px solid #ffd6d6;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  margin: 8px 0 16px 0;
+  background: #fff;
+  color: #2d2d2d;
+  outline: none;
+  transition: border 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+  border: 1.5px solid #e48f8f;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #ffe0e6;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffd6d6;
+  border-radius: 8px;
 }

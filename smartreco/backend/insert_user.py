@@ -11,7 +11,7 @@ collection = db[os.getenv("MONGO_COLLECTION_NAME", "user_profiles")]
 user_profile = {
     "user_id": "59b99ddacfa9a34dcd7885fc",
     "profile": {
-        "skin_type": "oily",
+        "skin_type": "dry",
         "age": 25,
         "ethnicity": "asian",
         "budget": 1000,
